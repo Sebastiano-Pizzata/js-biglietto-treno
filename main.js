@@ -13,26 +13,29 @@
 
 
 //Fase di preparazione delle variabili
-
-let chilometri = prompt("quanti chilometri devi precorrere?" );
-let età =  prompt("quanti anni hai?");
-
+const prezzoViaggioPerChilometri = 0.21
+let chilometri = parseInt(prompt("quanti chilometri devi precorrere?" ));
+let età =  parseInt(prompt("quanti anni hai?"));
+let bigliettoMinorenni = 0.80;
+let bigliettoOver = 0.60;
+let prezzo;
 
 console.log( chilometri, età )
 
 //Fase di calcolo del prezzo con sconti e con il decimale
 
-let prezzoViaggioPerChilometri = chilometri * 0.21 ;
-
-let prezzo = prezzoViaggioPerChilometri.toFixed(2)
-
 if(età < 18 ){
-    prezzoViaggioPerChilometri = ( chilometri * 0.21) * 20 / 100; 
+     prezzo = ( prezzoViaggioPerChilometri * chilometri ) * bigliettoMinorenni; 
+    // console.log(`il prezzo del biglietto è: ${prezzo}`)
     
 } else if (età > 65 ){
-    prezzoViaggioPerChilometri = ( chilometri * 0.21) * 40 / 100;
+     prezzo = ( prezzoViaggioPerChilometri * chilometri) * bigliettoOver ;
+    //  console.log(`il prezzo del biglietto è: ${prezzo}`)
 
+} else{
+     prezzo = (prezzoViaggioPerChilometri * chilometri );
+    //  console.log(`il prezzo del biglietto è: ${prezzo}`)
 }
 
-console.log( prezzoViaggioPerChilometri,prezzo )
+console.log( `il prezzo del biglietto è: ${prezzo.toFixed(2)}` )
 
